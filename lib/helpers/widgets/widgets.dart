@@ -80,12 +80,6 @@ class DoubleColumn extends StatelessWidget {
 
 class RemoveGlowScrollBehavior extends ScrollBehavior {
   const RemoveGlowScrollBehavior();
-
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
-  }
 }
 
 class RemoveScrollGlow extends StatelessWidget {

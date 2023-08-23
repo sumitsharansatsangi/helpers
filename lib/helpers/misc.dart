@@ -124,6 +124,7 @@ class Misc {
     final Size logicalSize =
         size ?? ui.window.physicalSize / ui.window.devicePixelRatio;
     final RenderView renderView = RenderView(
+      view: View.of(context!),
       child: RenderPositionedBox(child: repaintBoundary),
       configuration: ViewConfiguration(
         size: logicalSize,
