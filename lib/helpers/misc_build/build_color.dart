@@ -50,7 +50,7 @@ class BuildColor {
   ///```dart
   ///return Theme.of(context).bottomAppBarColor
   ///```
-  Color get bottomAppBar => Theme.of(_context).bottomAppBarColor;
+  Color get bottomAppBar => Theme.of(_context).bottomAppBarTheme.color?? Theme.of(_context).dialogBackgroundColor;
 
   ///```dart
   ///return Theme.of(context).cardColor
