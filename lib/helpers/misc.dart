@@ -122,7 +122,7 @@ class Misc {
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
     final PipelineOwner pipelineOwner = PipelineOwner();
     final Size logicalSize =
-        size ?? ui.window.physicalSize / ui.window.devicePixelRatio;
+        size ?? View.of(context!).physicalSize / View.of(context).devicePixelRatio;
     final RenderView renderView = RenderView(
       view: View.of(context!),
       child: RenderPositionedBox(child: repaintBoundary),
@@ -145,12 +145,10 @@ class Misc {
       container: repaintBoundary,
       child: Directionality(
         textDirection: TextDirection.ltr,
-        child: context != null
-            ? InheritedTheme.captureAll(
+        child: InheritedTheme.captureAll(
                 context,
                 MediaQuery(data: MediaQuery.of(context), child: child),
-              )
-            : child,
+              ),
       ),
     ).attachToRenderTree(buildOwner);
 
@@ -173,7 +171,7 @@ class Misc {
       isDirty = false;
       image = await repaintBoundary.toImage(
         pixelRatio:
-            pixelRatio ?? (ui.window.physicalSize.width / logicalSize.width),
+        pixelRatio ?? (View.of(context).physicalSize.width / logicalSize.width),
       );
       await Future.delayed(delay);
       if (isDirty) buildScope();
